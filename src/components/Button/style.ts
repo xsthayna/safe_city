@@ -22,7 +22,7 @@ export const StyledButton = styled.View`
 `;
 
 export const TextButton = styled.Text`
-    color: ${(props: Props) => props.fill ? 'white' : Colors[props.category || ColorsTypes.PRIMARY]};
+    color: ${(props: Props) => props.fill ? (props.category === ColorsTypes.NEUTRAL ? Colors[ColorsTypes.DARK_NEUTRAL] : 'white') : Colors[props.category || ColorsTypes.PRIMARY]};
     font-size: 16px;
     font-weight: bold;
 `;
