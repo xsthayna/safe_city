@@ -12,7 +12,7 @@ export interface Props {
 const Button: React.FC<Props> = ({ category, fill, title }) => {
 
     return (
-        <ButtonComponent title={title} category={category}>
+        <ButtonComponent title={title}  fill={fill} category={category}>
             <TextButton fill={fill} category={category}>
                 { title || "Meu botão" }
             </TextButton>
