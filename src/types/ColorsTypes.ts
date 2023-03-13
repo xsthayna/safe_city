@@ -8,5 +8,6 @@ export enum ColorsTypes {
     SUCCESS = 'success',
     DARK_SUCCECSS = 'darkSuccess',
     NEUTRAL = 'neutral',
-    DARK_NEUTRAL = 'darkNeutral'
+    DARK_NEUTRAL = 'darkNeutral',
+    WHITE = 'white'
 }

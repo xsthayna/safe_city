@@ -11,4 +11,5 @@ export const Colors = {
     [ColorsTypes.DARK_SUCCECSS]: '',
     [ColorsTypes.NEUTRAL]: '#ECECEC',
     [ColorsTypes.DARK_NEUTRAL]: '#333333',
+    [ColorsTypes.WHITE]: '#FFFFFF '
 }
