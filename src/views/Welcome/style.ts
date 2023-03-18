@@ -31,6 +31,7 @@ export const Img = styled.Image`
 export const Title = styled.Text`
     font-size: 26px;
     font-weight: bold;
+    color: white;
 `;
 
 export const Actions = styled.View`
@@ -45,6 +46,7 @@ export const Actions = styled.View`
 export const Description = styled.Text`
     font-size: 16px;
     margin-bottom: 10px;
+    color: white;
 `;
 
 export const  RecoveryPassword = styled.View`
@@ -57,4 +59,5 @@ export const  RecoveryPassword = styled.View`
 export const Link = styled.Text`
     font-size: 14px;
     font-weight: bold;
+    color: white;
 `;
