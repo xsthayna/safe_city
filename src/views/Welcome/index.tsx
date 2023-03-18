@@ -1,4 +1,4 @@
-import React, { Text, View, ImageBackground, Image } from 'react-native';
+import React from 'react-native';
 import { Container , Img, Content, Title, Actions, Description, Link, RecoveryPassword } from './style';
 import { Images } from '../../Images';
 import { Button } from '../../components';
