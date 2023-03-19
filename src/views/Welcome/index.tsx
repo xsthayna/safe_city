@@ -8,7 +8,7 @@ const Welcome = () => {
 
     return (
         <Container
-            source={require('./city-background.png')}
+            source={Images.background}
             resizeMode={'cover'}
         >
             <Content>
