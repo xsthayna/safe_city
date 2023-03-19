@@ -1,4 +1,4 @@
-import { Text, View, Linking, TouchableWithoutFeedback } from "react-native";
+import { Linking, TouchableWithoutFeedback } from "react-native";
 import { Card, Cards, Container, ContainerIcon, Title, CardTitle } from './style';
 import Icon from 'react-native-vector-icons/Feather';
 import { Colors } from "../../constants/Colors";
@@ -15,15 +15,17 @@ const ExternalLinks = () => {
                 Escolha uma das opções abaixo:
             </Title>
             <Cards>
-                <Card>
-                    <ContainerIcon>
-                        <Icon name="phone" size={24} color="white" />
-                    </ContainerIcon>
-                    <CardTitle>
-                        Atendimento de emergência
-                    </CardTitle>
-                    <Icon name="external-link" color={Colors.darkSecundary} size={22} />
-                </Card>
+                <TouchableWithoutFeedback onPress={() => goToLink("tel:190")}>
+                    <Card>
+                        <ContainerIcon>
+                            <Icon name="phone" size={24} color="white" />
+                        </ContainerIcon>
+                        <CardTitle>
+                            Atendimento de emergência
+                        </CardTitle>
+                        <Icon name="external-link" color={Colors.darkSecundary} size={22} />
+                    </Card>
+                </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback onPress={() => goToLink("")}>
                     <Card>
                         <ContainerIcon>
