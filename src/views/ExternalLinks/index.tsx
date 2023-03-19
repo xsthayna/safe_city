@@ -26,7 +26,7 @@ const ExternalLinks = () => {
                         <Icon name="external-link" color={Colors.darkSecundary} size={22} />
                     </Card>
                 </TouchableWithoutFeedback>
-                <TouchableWithoutFeedback onPress={() => goToLink("")}>
+                <TouchableWithoutFeedback onPress={() => goToLink("https://www.webdenuncia.org.br/cidadao/denuncie")}>
                     <Card>
                         <ContainerIcon>
                             <Icon name="globe" size={24} color="white" />
