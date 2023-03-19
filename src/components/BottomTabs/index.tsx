@@ -11,6 +11,7 @@ import Feed from "../../views/Feed";
 
 import { Colors } from "../../constants/Colors";
 import { CallButton } from "../../components";
+import { Image } from "react-native";
 
 
 const Tab = createBottomTabNavigator();
@@ -34,47 +35,97 @@ export default function Routes() {
                 options={{
                     tabBarIcon: ({ size, color }) => (
                         <Icon name="menu" size={28} color={color} />
-                    )
+                    ),
+                    headerStyle:{
+                        backgroundColor: Colors.primary,
+                        height: 60
+                    },
+                    headerTitleAlign: "center",
+                    headerTitleStyle: {
+                        color: "white",
+                        fontSize: 16,
+                        fontWeight: "normal"
+                    },
                 }}
             />
 
             <Tab.Screen 
-                name="External Message Links" 
+                name="Realizar denúncia" 
                 component={ExternalLinks}
                 options={{
                     tabBarIcon: ({ size, color }) => (
                         <Icon name="message-square" size={28} color={color} />
-                    )
+                    ),
+                    headerStyle:{
+                        backgroundColor: Colors.primary,
+                        height: 60
+                    },
+                    headerTitleAlign: "center",
+                    headerTitleStyle: {
+                        color: "white",
+                        fontSize: 16,
+                        fontWeight: "normal"
+                    },
                 }}
             />
 
             <Tab.Screen 
-                name="SignUp02" 
-                component={SignUp}
+                name="Call Button" 
+                component={() => null}
                 options={{
                     tabBarIcon: () => (
                         <CallButton />
-                    )
+                    ),
+                    headerStyle:{
+                        backgroundColor: Colors.primary,
+                        height: 60
+                    },
+                    headerTitleAlign: "center",
+                    headerTitleStyle: {
+                        color: "white",
+                        fontSize: 16,
+                        fontWeight: "normal"
+                    },
                 }}    
             />
 
             <Tab.Screen 
-                name="Map" 
+                name="Ocorrências" 
                 component={Map}
                 options={{
                     tabBarIcon: ({ size, color }) => (
                         <Icon name="map-pin" size={28} color={color} />
-                    )
+                    ),
+                    headerStyle:{
+                        backgroundColor: Colors.primary,
+                        height: 60
+                    },
+                    headerTitleAlign: "center",
+                    headerTitleStyle: {
+                        color: "white",
+                        fontSize: 16,
+                        fontWeight: "normal"
+                    },
                 }}  
             />
 
             <Tab.Screen 
-                name="Feed" 
+                name="Públicações" 
                 component={Feed}
                 options={{
                     tabBarIcon: ({ size, color }) => (
                         <Icon name="list" size={28} color={color} />
-                    )
+                    ),
+                    headerStyle:{
+                        backgroundColor: Colors.primary,
+                        height: 60
+                    },
+                    headerTitleAlign: "center",
+                    headerTitleStyle: {
+                        color: "white",
+                        fontSize: 16,
+                        fontWeight: "normal"
+                    }
                 }} 
             />
 
