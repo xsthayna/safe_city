@@ -10,4 +10,5 @@ export const Container = styled.View`
     align-items: center;
     justify-content: center;
     margin-bottom: 25;
+    border: 2px solid white;
 `;
