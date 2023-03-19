@@ -15,10 +15,6 @@ export const StyledButton = styled.View`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &:focus{
-        background-color: red;
-    }
 `;
 
 export const TextButton = styled.Text`
