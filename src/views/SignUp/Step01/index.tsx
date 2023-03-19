@@ -1,8 +1,9 @@
 import { Image, View } from "react-native";
-import { Container, Title, Header, Img, Content, Form, Link, Description, Row } from "../style";
+import { Container, Title, Header, Img, Content, Form, Link, Description, Row, Items } from "../style";
 import { Images } from "../../../Images";
 import { Input, Button  } from "../../../components";
 import { ColorsTypes } from "../../../types/ColorsTypes";
+import Icon from 'react-native-vector-icons/Feather';
 
 interface Props {
     setStep: any
@@ -15,7 +16,9 @@ const Step01 = ({ setStep }: Props) => {
             resizeMode={'cover'}
         >
         <Header>
-            <Img source={Images.horizontal_logo} />
+            <Items>
+                <Img source={Images.horizontal_logo} />
+            </Items>
         </Header>
             <Content>
                 <Form>

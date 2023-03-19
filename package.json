@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
+    "@react-navigation/stack": "^6.3.16",
     "@types/styled-components": "^5.1.6",
     "react": "18.2.0",
     "react-native": "0.71.3",
@@ -21,6 +22,7 @@
     "react-native-screens": "^3.20.0",
     "react-native-vector-icons": "^9.2.0",
     "react-navigation": "^4.4.4",
+    "react-router-native": "^6.9.0",
     "styled-components": "^5.3.8"
   },
   "devDependencies": {

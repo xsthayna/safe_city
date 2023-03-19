@@ -1,22 +1,28 @@
 import { Image, View } from "react-native";
-import { Container, Title, Header, Img, Content, Form, Link, Description } from "../style";
+import { Container, Title, Header, Img, Content, Items, Form, Link, Description } from "../style";
 import { Images } from "../../../Images";
 import { Input, Button  } from "../../../components";
 import { ColorsTypes } from "../../../types/ColorsTypes";
+import Icon from "react-native-vector-icons/Feather";
+import BottomTabs from '../../../components/BottomTabs';
 
 interface Props {
-    setStep: any
+    setStep: any;
+    navigation: any;
 }
 
 
-const Login = ({ setStep }: Props) => {
+const Step02 = ({ setStep, navigation }: Props) => {
+    
     return (
         <Container
             source={Images.background}
             resizeMode={'cover'}
         >
         <Header>
-            <Img source={Images.horizontal_logo} />
+            <Items>
+                <Img source={Images.horizontal_logo} />
+            </Items>
         </Header>
             <Content>
                 <Form>
@@ -38,8 +44,9 @@ const Login = ({ setStep }: Props) => {
                     <Button fill category={ColorsTypes.WHITE} title="Finalizar cadastro" />
                 </Form>
             </Content>
+            <BottomTabs />
         </Container>
     )
 }
 
-export default Login;
+export default Step02;
