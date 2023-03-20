@@ -4,14 +4,11 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import ExternalLinks from '../../views/ExternalLinks';
 import Map from '../../views/Map';
-import Welcome from '../../views/Welcome';
-import Login from '../../views/Login';
-import SignUp from "../../views/SignUp";
 import Feed from "../../views/Feed";
+import UnderConstruction from "../../views/UnderConstruction"
 
 import { Colors } from "../../constants/Colors";
 import { CallButton } from "../../components";
-import { Image } from "react-native";
 
 
 const Tab = createBottomTabNavigator();
@@ -28,10 +25,11 @@ export default function Routes() {
                 },
                 tabBarShowLabel: false
             }}
+            initialRouteName="Ocorrências"
         >
             <Tab.Screen 
-                name="login"
-                component={Welcome}
+                name="Menu"
+                component={UnderConstruction}
                 options={{
                     tabBarIcon: ({ size, color }) => (
                         <Icon name="menu" size={28} color={color} />
@@ -46,6 +44,7 @@ export default function Routes() {
                         fontSize: 16,
                         fontWeight: "normal"
                     },
+                    headerShown: false
                 }}
             />
 
@@ -111,7 +110,7 @@ export default function Routes() {
 
             <Tab.Screen 
                 name="Públicações" 
-                component={Feed}
+                component={UnderConstruction}
                 options={{
                     tabBarIcon: ({ size, color }) => (
                         <Icon name="list" size={28} color={color} />
@@ -120,6 +119,7 @@ export default function Routes() {
                         backgroundColor: Colors.primary,
                         height: 60
                     },
+                    headerShown: false,
                     headerTitleAlign: "center",
                     headerTitleStyle: {
                         color: "white",
