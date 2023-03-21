@@ -5,15 +5,41 @@ import { Input, Button  } from "../../../components";
 import { ColorsTypes } from "../../../types/ColorsTypes";
 import Icon from "react-native-vector-icons/Feather";
 import BottomTabs from '../../../components/BottomTabs';
+import { signUpTypes } from "../index";
+import UserRouter from '../../../routes/user';
+import AuthRouter from '../../../routes';
+import { login as reducerLogin } from '../../../reducer/actions';
+import { useDispatch, useSelector } from "react-redux";
 
 interface Props {
     setStep: any;
     navigation: any;
+    data: signUpTypes;
+    setData: any;
 }
 
 
-const Step02 = ({ setStep, navigation }: Props) => {
+const Step02 = ({ setStep, navigation, data, setData }: Props) => {
     
+    console.log('-------------------- data', data)
+    const dispatch = useDispatch();
+
+    function handleCadastro() {
+        console.log('--- login')
+        UserRouter.handleCadastro(data)
+            .then((res) => {
+                console.log('--- tesresrser', res)
+                UserRouter.handleLogin(data.email, data.password)
+                .then((resLogin) => {
+                    console.log('--- resLogin', resLogin)
+                    AuthRouter.setHeader(resLogin.token)
+                    dispatch(reducerLogin(resLogin))
+                })
+                .catch((console.log))
+            })
+            .catch((console.log))
+    }
+
     return (
         <Container
             source={Images.background}
@@ -34,14 +60,21 @@ const Step02 = ({ setStep, navigation }: Props) => {
                     </View>
                     <Input
                         placeholder="Nome de usuário"
+                        onChangeText={(text: string) => setData({ ...data, surname: text })}
                         width={350}
                     />
                     <Input                    
                         placeholder="Senha"
                         secureTextEntry={true}
+                        onChangeText={(text: string) => setData({ ...data, password: text })}
                         width={350}
                     />
-                    <Button fill category={ColorsTypes.WHITE} title="Finalizar cadastro" />
+                    <Button 
+                        fill 
+                        category={ColorsTypes.WHITE} 
+                        title="Finalizar cadastro" 
+                        onPress={() => handleCadastro()}
+                    />
                 </Form>
             </Content>
             <BottomTabs />

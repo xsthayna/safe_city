@@ -4,12 +4,18 @@ import { Images } from "../../../Images";
 import { Input, Button  } from "../../../components";
 import { ColorsTypes } from "../../../types/ColorsTypes";
 import Icon from 'react-native-vector-icons/Feather';
+import { useState } from "react";
+import { signUpTypes } from "../index";
 
 interface Props {
     setStep: any
+    data: signUpTypes
+    setData: any
 }
 
-const Step01 = ({ setStep }: Props) => {
+
+const Step01 = ({ setStep, data, setData }: Props) => {
+    
     return (
         <Container
             source={Images.background}
@@ -30,11 +36,13 @@ const Step01 = ({ setStep }: Props) => {
                     </View>
                     <Input
                         placeholder="Nome completo"
+                        onChangeText={(text: string) => setData({ ...data, name: text })}
                         width={410}
                     />
                     <Row>
                         <Input                    
                             placeholder="CPF"
+                            onChangeText={(text: string) => setData({ ...data, cpf: text })}
                             width={160}
                         />
                         <Input                    
@@ -44,15 +52,18 @@ const Step01 = ({ setStep }: Props) => {
                     </Row>
                     <Input
                         placeholder="E-mail"
+                        onChangeText={(text: string) => setData({ ...data, email: text })}
                         width={410}
                     />
                     <Row>
                         <Input                    
                             placeholder="Estado"
+                            onChangeText={(text: string) => setData({ ...data, country: text })}
                             width={200}
                         />
                         <Input                    
                             placeholder="CEP"
+                            onChangeText={(text: string) => setData({ ...data, cep: text })}
                             width={210}
                         />
                     </Row>

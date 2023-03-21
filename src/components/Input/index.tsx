@@ -9,6 +9,7 @@ const Input = ({ ...props }) => {
             placeholderTextColor="rgba(255, 255, 255, 0.425)"
             inputContainerStyle={{ backgroundColor: "rgba(255, 255, 255, 0.096)", paddingLeft: 10 }}
             containerStyle={{ width: props.width }}
+            onChangeText={props.onChange}
             {...props}
         />
     )

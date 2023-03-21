@@ -7,23 +7,6 @@
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
 import BottomTabs from './src/components/BottomTabs';
 import { NavigationContainer } from '@react-navigation/native';
@@ -31,78 +14,35 @@ import { createStackNavigator } from  '@react-navigation/stack';
 import Login from './src/views/Login';
 import Welcome from './src/views/Welcome';
 import SignUp from './src/views/SignUp';
+import { Provider } from 'react-redux'
+import store from './src/store';
+import Map from './src/views/Map';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   const Stack = createStackNavigator();
-  const isLogged = true;
+  const user = store.getState();
 
-  if (isLogged) return (
-    <NavigationContainer>
-      <BottomTabs />
-    </NavigationContainer>
-  )
+  console.log('------ usre', user)
+  // if (user && user.user.token) return (
+  //   <Provider store={store}>
+  //     <NavigationContainer>
+  //       <BottomTabs />
+  //     </NavigationContainer>
+  //   </Provider>
+  // )
 
   return (
-    <>
+    <Provider store={store}>
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen 
-            name="welcome"  
-            component={Welcome} 
-            options={{
-              headerShown: false
-            }}
-          />
-
-          <Stack.Screen 
-            name="login"  
-            component={Login}
-            options={{
-              headerShown: false
-            }}
-          />
-
-          <Stack.Screen 
-            name="signUp"  
-            component={SignUp} 
-            options={{
-              headerShown: false
-            }}
-          />
-
-        </Stack.Navigator>
+        <BottomTabs />
       </NavigationContainer>
-    </>
+    </Provider>
    );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

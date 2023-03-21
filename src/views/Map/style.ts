@@ -12,7 +12,7 @@ export const Container = styled(ImageBackground)`
 `;
 
 export const Content = styled.View`
-    height: 50%;
+    height: 55%;
     width: 85%;
     display: flex;
     flex-direction: column;
@@ -76,4 +76,8 @@ export const Quantity = styled.Text`
     color: ${Colors.darkSecundary};
     font-weight: bold;
     font-size: 18px;
+`;
+
+export const ModalHeader = styled.Text`
+    font-weight: bold;
 `;
