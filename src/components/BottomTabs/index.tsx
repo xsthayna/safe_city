@@ -167,27 +167,6 @@ export default function Routes() {
                 }} 
             />
 
-            <Tab.Screen 
-                name="Adicionar Ocorrência" 
-                component={AddOccourence}
-                options={{
-                    tabBarIcon: ({ size, color }) => (
-                        <Icon name="list" size={28} color={color} />
-                    ),
-                    headerStyle:{
-                        backgroundColor: Colors.primary,
-                        height: 60
-                    },
-                    headerShown: false,
-                    headerTitleAlign: "center",
-                    headerTitleStyle: {
-                        color: "white",
-                        fontSize: 16,
-                        fontWeight: "normal"
-                    }
-                }} 
-            />
-
         </Tab.Navigator>
     )
 

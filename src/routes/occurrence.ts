@@ -36,7 +36,7 @@ class Occurrence {
     }
 
 
-    async handleCreateOccurrence(description: string, type: string, date: string, cep: string) {
+    async handleCreateOccurrence(description: string, type: string, cep: string) {
         try {
             const response = await axios.post(this.authHeader.host + "/occurrence/create", { 
                 description,

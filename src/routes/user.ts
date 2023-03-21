@@ -11,7 +11,7 @@ class User {
 
     async handleLogin(email: string, password: string) {
         try {
-            const response = await axios.post( this.authHeader.host + "/user/login", { email: "thayna@gmail.com", password: "123" })
+            const response = await axios.post( this.authHeader.host + "/user/login", { email, password })
             return response.data
         } catch (ex: any) {
             return ex.message;
