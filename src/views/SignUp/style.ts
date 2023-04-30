@@ -11,12 +11,12 @@ export const Container = styled(ImageBackground)`
 `;
 
 export const Content = styled.View`
-    height: 80%;
-    width: 80%;
+    height: 60%;
+    width: 95%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
 `;
 
 export const Form = styled.View`
@@ -25,7 +25,7 @@ export const Form = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 60%;
 `;
 
 export const Header = styled.View`
@@ -34,7 +34,7 @@ export const Header = styled.View`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 40px;
+    height: 20%;
 `;
 
 export const Items = styled.View`

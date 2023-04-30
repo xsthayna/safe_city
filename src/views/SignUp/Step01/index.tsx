@@ -37,44 +37,35 @@ const Step01 = ({ setStep, data, setData }: Props) => {
                     <Input
                         placeholder="Nome completo"
                         onChangeText={(text: string) => setData({ ...data, name: text })}
-                        width={410}
+                        width={'100%'}
                     />
-                    <Row>
-                        <Input                    
-                            placeholder="CPF"
-                            onChangeText={(text: string) => setData({ ...data, cpf: text })}
-                            width={160}
-                        />
-                        <Input                    
-                            placeholder="Data de nascimento"
-                            width={250}
-                        />
-                    </Row>
-                    <Input
-                        placeholder="E-mail"
-                        onChangeText={(text: string) => setData({ ...data, email: text })}
-                        width={410}
+                    <Input                    
+                        placeholder="CPF"
+                        onChangeText={(text: string) => setData({ ...data, cpf: text })}
+                        width={'100%'}
                     />
-                    <Row>
-                        <Input                    
-                            placeholder="Estado"
-                            onChangeText={(text: string) => setData({ ...data, country: text })}
-                            width={200}
-                        />
-                        <Input                    
-                            placeholder="CEP"
-                            onChangeText={(text: string) => setData({ ...data, cep: text })}
-                            width={210}
-                        />
-                    </Row>
+                    <Input                    
+                        placeholder="Data de nascimento"
+                        width={'100%'}
+                    />
+                    <Input                    
+                        placeholder="Estado"
+                        onChangeText={(text: string) => setData({ ...data, country: text })}
+                        width={'100%'}
+                    />
+                    <Input                    
+                        placeholder="CEP"
+                        onChangeText={(text: string) => setData({ ...data, cep: text })}
+                        width={'100%'}
+                    />
                     <Row>
                         <Input                    
                             placeholder="Endereço"
-                            width={270}
+                            width={'60%'}
                         />
                         <Input                    
                             placeholder="Número"
-                            width={140}
+                            width={'40%'}
                         />
                     </Row>
                     <Button 

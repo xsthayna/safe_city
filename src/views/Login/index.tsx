@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import { Container, Title, Header, Img, Content, Form, Link } from "./style";
+import { Container, Title, Header, Img, Content, Form, Link, Description } from "./style";
 import { Images } from "../../Images";
 import { Input, Button  } from "../../components";
 import { ColorsTypes } from "../../types/ColorsTypes";
@@ -12,15 +12,14 @@ import { Text } from "react-native-elements";
 
 
 const Login = ({ navigation }:any) => {
-    const [ email, setEmail ] = useState('');
-    const [ password, setPassword ] = useState('');
+    const [ email, setEmail ] = useState<string>('');
+    const [ password, setPassword ] = useState<string>('');
 
     const dispatch = useDispatch();
 
-    const user = useSelector((store: any) => store.user)
+    const user = useSelector((store: any) => store.user);
 
     function login() {
-        console.log('--- login')
         UserRouter.handleLogin(email, password)
             .then((data) => {
                 console.log('--- data', data)
@@ -38,11 +37,13 @@ const Login = ({ navigation }:any) => {
         <Header>
             <Img source={Images.horizontal_logo} />
         </Header>
-        <Text>{JSON.stringify(user)}</Text>
             <Content>
                 <Form>
                     <View>
                         <Title> Login </Title>
+                        <Description>
+                            Preencha seu e-mail e senha para realizar o login.
+                        </Description>
                     </View>
                     <Input
                         onChangeText={(text: string) => setEmail(text)}

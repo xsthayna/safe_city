@@ -42,11 +42,20 @@ export const Title = styled.Text`
     font-weight: bold;
     color: white;
     margin-bottom: 15px;
+    text-align: center;
 `;
 
 export const Link = styled.Text`
     font-size: 14px;
-    font-weight: bold;
     color: white;
     margin: 10px 0;
+    text-decoration: underline;
+`;
+
+export const Description = styled.Text`
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
 `;

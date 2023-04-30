@@ -55,19 +55,24 @@ const Step02 = ({ setStep, navigation, data, setData }: Props) => {
                     <View>
                         <Title> Cadastro </Title>
                         <Description>
-                            Agora escolha um nome de usuário para ser exibido no aplicativo e uma senha para realizar o login.
+                            Agora cadastre um nome de usuário, e-mail e senha para finalizar o cadastro.
                         </Description>
                     </View>
                     <Input
                         placeholder="Nome de usuário"
                         onChangeText={(text: string) => setData({ ...data, surname: text })}
-                        width={350}
+                        width={'100%'}
+                    />
+                    <Input
+                        placeholder="E-mail"
+                        onChangeText={(text: string) => setData({ ...data, email: text })}
+                        width={'100%'}
                     />
                     <Input                    
                         placeholder="Senha"
                         secureTextEntry={true}
                         onChangeText={(text: string) => setData({ ...data, password: text })}
-                        width={350}
+                        width={'100%'}
                     />
                     <Button 
                         fill 
