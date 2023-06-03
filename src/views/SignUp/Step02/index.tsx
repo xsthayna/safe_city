@@ -4,7 +4,7 @@ import { Images } from "../../../Images";
 import { Input, Button  } from "../../../components";
 import { ColorsTypes } from "../../../types/ColorsTypes";
 import Icon from "react-native-vector-icons/Feather";
-import BottomTabs from '../../../components/BottomTabs';
+import Navigation from '../../../components/Navigation';
 import { signUpTypes } from "../index";
 import UserRouter from '../../../routes/user';
 import AuthRouter from '../../../routes';
@@ -82,7 +82,7 @@ const Step02 = ({ setStep, navigation, data, setData }: Props) => {
                     />
                 </Form>
             </Content>
-            <BottomTabs />
+            <Navigation />
         </Container>
     )
 }

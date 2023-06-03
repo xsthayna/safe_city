@@ -1,20 +1,21 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Icon from 'react-native-vector-icons/Feather';
+import { createStackNavigator } from  '@react-navigation/stack';
 
 import ExternalLinks from '../../views/ExternalLinks';
 import Map from '../../views/Map';
 import Feed from "../../views/Feed";
 import UnderConstruction from "../../views/UnderConstruction"
-
-import { Colors } from "../../constants/Colors";
-import { CallButton } from "../../components";
-import { useSelector } from "react-redux";
-import { createStackNavigator } from  '@react-navigation/stack';
 import Welcome from "../../views/Welcome";
 import Login from "../../views/Login";
-import SignUp from "../../views/SignUp";
+import SignUp from "../../views/SignUp"
+
+import { Colors } from "../../constants/Colors";
+import Icon from 'react-native-vector-icons/Feather';
+;
 import AddOccourence from "../AddOccourence";
+import { CallButton } from "../../components";
 
 const Tab = createBottomTabNavigator();
 
@@ -127,7 +128,7 @@ export default function Routes() {
             />
 
             <Tab.Screen 
-                name="Map" 
+                name="Mapa" 
                 component={Map}
                 options={{
                     tabBarIcon: ({ size, color }) => (
@@ -169,5 +170,4 @@ export default function Routes() {
 
         </Tab.Navigator>
     )
-
 }

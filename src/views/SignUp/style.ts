@@ -10,13 +10,10 @@ export const Container = styled(ImageBackground)`
     justify-content: center;
 `;
 
-export const Content = styled.View`
-    height: 60%;
+export const Content = styled.ScrollView`
     width: 95%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 `;
 
 export const Form = styled.View`
@@ -25,7 +22,7 @@ export const Form = styled.View`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 60%;
+    margin: 10px 0;
 `;
 
 export const Header = styled.View`

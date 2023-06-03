@@ -1,15 +1,35 @@
-import { Text, View } from "react-native";
-import { Container, Img, Content, Title, Actions, Quantity, Card, Counter, Cards, Circle, ModalHeader } from './style';
+import { Text, View, PermissionsAndroid, TouchableWithoutFeedback } from "react-native";
+import MapView, { Marker } from "react-native-maps";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import Geolocation from "@react-native-community/geolocation";
+
+import store from "../../store";
+
+import { 
+    Container, Img, 
+    Content, Title, 
+    Actions, Quantity, 
+    Card, Counter, 
+    Cards, Circle, 
+    ModalHeader, Address, 
+    ViewOccourenceButton, AddOccourenceButton 
+} from './style';
 import { Images } from "../../Images";
 import { Button, Input } from "../../components";
-import { ColorsTypes } from "../../types/ColorsTypes";
-import store from "../../store";
-import occurrence from "../../routes/occurrence";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import AddOccourence from "../../components/AddOccourence";
 import { Input as AddInput } from "react-native-elements";
 import SelectDropdown from 'react-native-select-dropdown'
+import Icon from 'react-native-vector-icons/Feather';
+
+
+import occurrence from "../../routes/occurrence";
+import address from "../../routes/address";
+
+import { Coordinates, Occurence } from "../../types";
+import { ColorsTypes } from "../../types/ColorsTypes";
+
+
 
 const Map = ({ props }: any) => {
 
@@ -17,12 +37,18 @@ const Map = ({ props }: any) => {
     const [occurrences, setOccurrences] = useState<any>();
     const [addOcourrence, setAddOccourence] = useState<boolean>();
     const [occurrenceTypes, setOccurrenceTypes] = useState<any>([]);
-    const [newOccurence, setNewOccurence] = useState<{ cep: string, description: string, type: string }>({ cep: "", description: "", type: "" });
+    const [newOccurence, setNewOccurence] = useState<Occurence>({ cep: "", description: "", type: "" });
+    const [coordinates, setCoordinates] = useState<Coordinates>({
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005
+    });
+    const [userAddress, setUserAddress] = useState();
+    const [viewOccourences, setViewOccourences] = useState<boolean>()
 
     function handleTypesOccurrence() {
-        console.log('--- login')
         occurrence.handleTypesOccurrence().then((data) => {
-            console.log('-- data', data)
             setOccurrenceTypes(data.types)
         })
 
@@ -33,12 +59,20 @@ const Map = ({ props }: any) => {
 
     function saveOcoorenceia() {
         occurrence.handleCreateOccurrence(newOccurence.description, newOccurence.type, newOccurence.cep).then(() => {
-            console.log('---- salvou?')
             setAddOccourence(false)
         })
     }
+
+    function getUserAddress(latitude: number, longitude: number) {
+        address.getUserAddress(latitude, longitude).then((response) => {
+            setUserAddress(response);
+        })
+    }
+    
+
     useEffect(() => {
         handleTypesOccurrence();
+        callLocation();
     }, [])
 
     useEffect(() => {
@@ -46,6 +80,75 @@ const Map = ({ props }: any) => {
             setOccurrences(data)
         })
     }, [addOcourrence])
+
+    const callLocation = async () => {
+        const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+            {
+            title: "Permissão de Acesso à Localização",
+            message: "Este aplicativo precisa acessar sua localização.",
+            buttonNeutral: "Pergunte-me depois",
+            buttonNegative: "Cancelar",
+            buttonPositive: "OK"
+            }
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            getLocation();
+        } else {
+        }
+      }
+
+      const getLocation = () => {
+        Geolocation.getCurrentPosition(
+          (position) => {
+
+            const currentLatitude = JSON.stringify(position.coords.latitude);
+            const currentLongitude = JSON.stringify(position.coords.longitude);
+
+            setCoordinates({ ...coordinates, latitude: Number(currentLatitude), longitude: Number(currentLongitude) });
+            getUserAddress(Number(currentLatitude), Number(currentLongitude));
+        },
+          (error) => console.log(error.message),
+          { enableHighAccuracy: true, timeout: 12000, maximumAge: 1000 }
+        );
+        const watchID = Geolocation.watchPosition((position) => {
+          const currentLatitude = JSON.stringify(position.coords.latitude);
+          const currentLongitude = JSON.stringify(position.coords.longitude);
+          console.log(currentLatitude);
+          console.log(currentLongitude);
+        });
+        console.log(watchID);
+      }
+
+    return (
+        <Container>
+            <Address> 
+                {userAddress?.route} - {userAddress?.sublocality}, {userAddress?.country} 
+            </Address>
+            <TouchableWithoutFeedback onPress={() => setAddOccourence(true)}>
+                <AddOccourenceButton> Adicionar ocorrência </AddOccourenceButton>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={() => setViewOccourences(true)}>
+                <ViewOccourenceButton> Visualizar ocorrências </ViewOccourenceButton>
+            </TouchableWithoutFeedback>
+
+            <MapView 
+                initialRegion={coordinates} 
+                region={coordinates}
+                style={{width: '100%', height: '100%'}}
+                minZoomLevel={17}
+                zoomEnabled={true}
+                loadingEnabled={true}
+            >
+                <Marker 
+                    coordinate={{
+                        latitude: coordinates.latitude,
+                        longitude: coordinates.longitude
+                    }}
+                />
+            </MapView>
+        </Container>
+    )
 
     if (occurrences && occurrences.total_occurrences) return (
         <Container

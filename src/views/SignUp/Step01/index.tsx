@@ -1,4 +1,4 @@
-import { Image, View } from "react-native";
+import { Image, ScrollView, View } from "react-native";
 import { Container, Title, Header, Img, Content, Form, Link, Description, Row, Items } from "../style";
 import { Images } from "../../../Images";
 import { Input, Button  } from "../../../components";
@@ -26,56 +26,56 @@ const Step01 = ({ setStep, data, setData }: Props) => {
                 <Img source={Images.horizontal_logo} />
             </Items>
         </Header>
-            <Content>
-                <Form>
-                    <View>
-                        <Title> Cadastro </Title>
-                        <Description>
-                            Preencha o formulário abaixo para iniciar a criação da sua conta.
-                        </Description>
-                    </View>
-                    <Input
-                        placeholder="Nome completo"
-                        onChangeText={(text: string) => setData({ ...data, name: text })}
-                        width={'100%'}
+        <View>
+            <Title> Cadastro </Title>
+            <Description>
+                Preencha o formulário abaixo para iniciar a criação da sua conta.
+            </Description>
+        </View>
+        <Content>
+            <Form>
+                <Input
+                    placeholder="Nome completo"
+                    onChangeText={(text: string) => setData({ ...data, name: text })}
+                    width={'100%'}
+                />
+                <Input                    
+                    placeholder="CPF"
+                    onChangeText={(text: string) => setData({ ...data, cpf: text })}
+                    width={'100%'}
+                />
+                <Input                    
+                    placeholder="Data de nascimento"
+                    width={'100%'}
+                />
+                <Input                    
+                    placeholder="Estado"
+                    onChangeText={(text: string) => setData({ ...data, country: text })}
+                    width={'100%'}
+                />
+                <Input                    
+                    placeholder="CEP"
+                    onChangeText={(text: string) => setData({ ...data, cep: text })}
+                    width={'100%'}
+                />
+                <Row>
+                    <Input                    
+                        placeholder="Endereço"
+                        width={'60%'}
                     />
                     <Input                    
-                        placeholder="CPF"
-                        onChangeText={(text: string) => setData({ ...data, cpf: text })}
-                        width={'100%'}
+                        placeholder="Número"
+                        width={'40%'}
                     />
-                    <Input                    
-                        placeholder="Data de nascimento"
-                        width={'100%'}
-                    />
-                    <Input                    
-                        placeholder="Estado"
-                        onChangeText={(text: string) => setData({ ...data, country: text })}
-                        width={'100%'}
-                    />
-                    <Input                    
-                        placeholder="CEP"
-                        onChangeText={(text: string) => setData({ ...data, cep: text })}
-                        width={'100%'}
-                    />
-                    <Row>
-                        <Input                    
-                            placeholder="Endereço"
-                            width={'60%'}
-                        />
-                        <Input                    
-                            placeholder="Número"
-                            width={'40%'}
-                        />
-                    </Row>
-                    <Button 
-                        fill 
-                        category={ColorsTypes.WHITE} 
-                        title="Próximo" 
-                        onPress={() => setStep(2)}
-                    />
-                </Form>
-            </Content>
+                </Row>
+                <Button 
+                    fill 
+                    category={ColorsTypes.WHITE} 
+                    title="Próximo" 
+                    onPress={() => setStep(2)}
+                />
+            </Form>
+        </Content>
         </Container>
     )
 }

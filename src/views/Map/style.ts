@@ -1,8 +1,9 @@
 import styled from 'styled-components/native';
 import { ImageBackground, Image, Text } from 'react-native';
 import { Colors } from '../../constants/Colors';
+import { Button } from '../../components';
 
-export const Container = styled(ImageBackground)`
+export const Container = styled.View`
     height: 100%;
     width: 100%;
     display: flex;
@@ -80,4 +81,35 @@ export const Quantity = styled.Text`
 
 export const ModalHeader = styled.Text`
     font-weight: bold;
+`;
+
+export const Address = styled.Text`
+    padding: 10px 0;
+    background-color: white;
+    color: ${Colors.darkNeutral};
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    top: 0;
+`;
+
+export const AddOccourenceButton = styled.Text`
+    position: absolute!important;
+    z-index: 10;
+    bottom: 85;
+    background-color: ${Colors.primary};
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    width: 90%;
+    font-weight: bold;
+    text-align: center;
+`;
+
+export const ViewOccourenceButton = styled(AddOccourenceButton)`
+    background-color: ${Colors.neutral};
+    color: ${Colors.darkNeutral};
+    bottom: 30;
 `;

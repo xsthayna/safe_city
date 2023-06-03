@@ -58,6 +58,6 @@ export const  RecoveryPassword = styled.View`
 
 export const Link = styled.Text`
     font-size: 14px;
-    font-weight: bold;
     color: white;
+    text-decoration: underline;
 `;
